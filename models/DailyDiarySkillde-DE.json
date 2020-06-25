@@ -1,0 +1,994 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "daily diary",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": [
+                        "Abbrechen",
+                        "Breche die Aktion ab",
+                        "Ach vergiss es"
+                    ]
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "Hilfe",
+                        "Sage mir alle Befehle",
+                        "Sage mir alle Befehle die ich dir sagen kann",
+                        "Sage mir alle Befehle die es gibt",
+                        "Welche Befehle gibt es",
+                        "Was kann ich sagen",
+                        "Bitte sage mir alle Befehle die ich dir sagen kann"
+                    ]
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "Halt",
+                        "Stop "
+                    ]
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AddEventInaccurate",
+                    "slots": [
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "description",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "location",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "participants",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "dayofweek",
+                            "type": "AMAZON.DayOfWeek"
+                        },
+                        {
+                            "name": "time",
+                            "type": "AMAZON.TIME"
+                        }
+                    ],
+                    "samples": [
+                        "Füge für den {dayofweek} um {time} einen neuen Eintrag hinzu",
+                        "Füge für {dayofweek} um {time} einen neuen Eintrag hinzu",
+                        "Erstelle für den {dayofweek} um {time} einen neuen Eintrag",
+                        "Erstelle für {dayofweek} um {time} einen neuen Eintrag "
+                    ]
+                },
+                {
+                    "name": "AddEventPrecise",
+                    "slots": [
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "description",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "location",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "participants",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "time",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "date",
+                            "type": "AMAZON.DATE"
+                        }
+                    ],
+                    "samples": [
+                        "Füge für den {date} um {time} einen Eintrag hinzu",
+                        "Füge für den {date} um {time} einen neuen Eintrag hinzu",
+                        "Erstelle für den {date} um {time} einen Eintrag",
+                        "Erstelle für den {date} um {time} einen neuen Eintrag",
+                        "Füge einen Eintrag hinzu",
+                        "Füge den Eintrag {name} hinzu",
+                        "Füge den Eintrag mit dem Namen {name} hinzu",
+                        "Erstelle den Eintrag mit dem Namen {name}",
+                        "Erstelle den Eintrag {name}"
+                    ]
+                },
+                {
+                    "name": "AddEventRoutine",
+                    "slots": [
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "description",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "location",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "participants",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "{name} habe ich gerade gemacht",
+                        "Ich habe gerade {name}",
+                        "Ich war gerade beim {name}"
+                    ]
+                },
+                {
+                    "name": "GetEventsLocation",
+                    "slots": [
+                        {
+                            "name": "location",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "Was fand an dem Ort {location} statt",
+                        "Sag mir die letzten Einträge die an dem Ort {location} stattfanden"
+                    ]
+                },
+                {
+                    "name": "GetEventsParticipant",
+                    "slots": [
+                        {
+                            "name": "participant",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "Bei welchen Einträgen war {participant} beteiligt",
+                        "Sag mir die Einträge bei denen {participant} dabei war"
+                    ]
+                },
+                {
+                    "name": "GetEventsName",
+                    "slots": [
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "Welche Einträge haben den Namen {name}",
+                        "Sag mir die Einträge die den Namen {name} haben"
+                    ]
+                },
+                {
+                    "name": "GetEventsTimeRelative",
+                    "slots": [
+                        {
+                            "name": "count",
+                            "type": "AMAZON.NUMBER"
+                        },
+                        {
+                            "name": "unit",
+                            "type": "TIME_UNIT",
+                            "samples": [
+                                "{unit}",
+                                "nein {unit}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Was hatte ich in der letzten {unit}",
+                        "Sag mir alle Einträge der letzten {count} {unit}"
+                    ]
+                },
+                {
+                    "name": "GetEventsTimeInaccurate",
+                    "slots": [
+                        {
+                            "name": "moment",
+                            "type": "RELATIVE_MOMENT",
+                            "samples": [
+                                "nein {moment}",
+                                "{moment}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Was ist {moment} alles passiert"
+                    ]
+                },
+                {
+                    "name": "GetEventsTimePrecise",
+                    "slots": [
+                        {
+                            "name": "from",
+                            "type": "AMAZON.DATE",
+                            "samples": [
+                                "{from}",
+                                "ab {from}",
+                                "ab dem {from}"
+                            ]
+                        },
+                        {
+                            "name": "to",
+                            "type": "AMAZON.DATE",
+                            "samples": [
+                                "{to}",
+                                "bis {to}",
+                                "bis zum {to}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Sage mir alle Einträge die vom {from} bis zum {to} stattgefunden haben"
+                    ]
+                },
+                {
+                    "name": "GetLastEvent",
+                    "slots": [],
+                    "samples": [
+                        "Was habe ich zuletzt gemacht",
+                        "Gib mir den letzten Eintrag",
+                        "Was war der letzte Eintrag"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": [
+                        "Zurück"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "RELATIVE_MOMENT",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Übermorgen",
+                                "synonyms": [
+                                    "übernächsten Tag",
+                                    "den übernächsten Tag"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Morgen",
+                                "synonyms": [
+                                    "nächsten Tag",
+                                    "den nächsten Tag"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Heute"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gestern"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Vorgestern"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "TIME_UNIT",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Jahr",
+                                "synonyms": [
+                                    "Jahre",
+                                    "Jahren"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Monat",
+                                "synonyms": [
+                                    "Monate",
+                                    "Monaten"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Woche",
+                                "synonyms": [
+                                    "Wochen"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Tag",
+                                "synonyms": [
+                                    "Tagen"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Stunde",
+                                "synonyms": [
+                                    "Stunden"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Minute",
+                                "synonyms": [
+                                    "Minuten"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Sekunde",
+                                "synonyms": [
+                                    "Sekunden"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "GetEventsTimePrecise",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "from",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1017192613601.1508797904187"
+                            }
+                        },
+                        {
+                            "name": "to",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1017192613601.1520336428750"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "GetEventsTimeInaccurate",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "moment",
+                            "type": "RELATIVE_MOMENT",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1542555547251.871026760155"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "GetEventsTimeRelative",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "count",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "unit",
+                            "type": "TIME_UNIT",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1208578787662.1114697843717"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "AddEventInaccurate",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "dayofweek",
+                            "type": "AMAZON.DayOfWeek",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1189188349861.108142948592"
+                            }
+                        },
+                        {
+                            "name": "time",
+                            "type": "AMAZON.TIME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1189188349861.620622129334"
+                            }
+                        },
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1189188349861.324757750571"
+                            }
+                        },
+                        {
+                            "name": "description",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1383876302070.1404227074638"
+                            }
+                        },
+                        {
+                            "name": "location",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1520172287514.1005165327114"
+                            }
+                        },
+                        {
+                            "name": "participants",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1520172287514.1259268504077"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "GetEventsName",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.428469108341.730425944005"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "GetEventsParticipant",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "participant",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.375816758308.97789283436"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "GetEventsLocation",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "location",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.655295554641.594991442828"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "AddEventPrecise",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "time",
+                            "type": "AMAZON.TIME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1566189182778.804726195448"
+                            }
+                        },
+                        {
+                            "name": "date",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1566189182778.869476426770"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInDuration",
+                                    "prompt": "Slot.Validation.884920274374.597528880798.349656395278",
+                                    "start": "",
+                                    "end": "-P0D"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.267535298288.940357283043"
+                            }
+                        },
+                        {
+                            "name": "description",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.27273273193.1554263748483"
+                            }
+                        },
+                        {
+                            "name": "location",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.27273273193.149802434267"
+                            }
+                        },
+                        {
+                            "name": "participants",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.27273273193.1035336900185"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "AddEventRoutine",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.538515329079.1101806085992"
+                            }
+                        },
+                        {
+                            "name": "location",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.249811311403.1199925364342"
+                            }
+                        },
+                        {
+                            "name": "description",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.320926111247.648121280959"
+                            }
+                        },
+                        {
+                            "name": "participants",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.320926111247.664956847046"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1017192613601.1508797904187",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Ab wann"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Ab wann soll ich die Einträge suchen"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1017192613601.1520336428750",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Bis wann"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Bis wann soll ich die Einträge suchen"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1542555547251.871026760155",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Meintest du heute"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Für wann soll ich die Einträge suchen"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1208578787662.1114697843717",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Meintest du Stunden"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Für welche Zeiteinheit soll ich suchen"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1208578787662.878148816510",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Für wie viele Zeiteinheiten soll ich suchen"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.428469108341.730425944005",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Eintrag Namen meintest du"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Nach welchem Eintrag Namen soll ich suchen"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Nach welchem Eintrag Namen soll ich filtern"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.375816758308.97789283436",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Teilnehmer meintest du"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Nach welchem Teilnehmer soll ich suchen"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Nach welchen Teilnehmer soll ich filtern"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1189188349861.108142948592",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "An welchem Wochentag war das"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Für welchen Wochentag soll ich den Eintrag erstellen"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1189188349861.620622129334",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Um wie viel Uhr hat das stattgefunden"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Welche Uhrzeit soll ich eintragen"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1189188349861.324757750571",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wie soll der Eintrag heißen"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Namen soll ich dem Eintrag geben"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.267535298288.940357283043",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wie soll der Eintrag heißen"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Namen soll ich dem Eintrag geben"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.538515329079.1101806085992",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wie soll der Eintrag heißen"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Namen soll ich dem Eintrag geben"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.655295554641.594991442828",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Ort meintest du"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Nach welchem Ort soll ich suchen"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Nach welchem Ort soll ich filtern"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.299145580408.677215258965",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Nach wie vielen soll maximal gesucht werden"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.884920274374.597528880798.349656395278",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Das gennante Datum liegt in der Zukunft. Welches vergangene Datum soll verwendet werden?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.249811311403.1199925364342",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wo fand der Eintrag statt"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Wo ist das ganze passiert"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.249811311403.603844074469",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Vor wie viel {unit} "
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.249811311403.1415158894603",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Vor drei {count} was "
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1383876302070.1404227074638",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welche Beschreibung soll der Eintrag haben"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1520172287514.1005165327114",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wo fand der Eintrag statt"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1520172287514.1259268504077",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wer hat alles teilgenommen"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Wer ist alles Teilnehmer"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.27273273193.1554263748483",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welche Beschreibung soll der Eintrag haben"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.320926111247.648121280959",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welche Beschreibung soll der Eintrag haben"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.27273273193.149802434267",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wo fand der Eintrag statt"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.27273273193.1035336900185",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wer hat alles teilgenommen"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Wer ist alles Teilnehmer"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.320926111247.664956847046",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wer ist alles Teilnehmer"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1566189182778.804726195448",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Um wie viel Uhr hat der Eintrag stattgefunden"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Welche Uhrzeit soll ich eintragen"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1566189182778.869476426770",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "An welchem Tag hat das Ereignis stattgefunden"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Für welchen Tag soll ich das eintragen"
+                    }
+                ]
+            }
+        ]
+    }
+}
